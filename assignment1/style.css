@@ -1,0 +1,273 @@
+#hover-overlay {
+  display: none;
+} /* Rich Brown inspired styles with interaction simulation */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  line-height: 1.6;
+  color: #ffffff;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #6f8d93;
+  overflow-x: hidden;
+  height: 100vh;
+}
+
+/* Assignment info */
+.assignment-info {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.5);
+  z-index: 100;
+  text-align: right;
+}
+
+.student-info {
+  margin-top: 4px;
+  font-weight: 300;
+}
+
+.student-id {
+  margin-top: 2px;
+  font-size: 9px;
+}
+
+/* Corner letters */
+.corner-letter {
+  position: fixed;
+  font-family: "Inter", sans-serif;
+  font-size: 180px;
+  font-weight: 700;
+  color: #ffffff;
+  z-index: -1;
+  margin: 0;
+  padding: 0;
+  line-height: 0.7;
+  transition: all 0.3s ease;
+}
+
+.top-left {
+  top: 3px;
+  left: -4px;
+}
+
+.bottom-left {
+  bottom: 3px;
+  left: -13px;
+}
+
+.corner-letter:hover {
+  margin: 15px;
+}
+
+/* Vertical lines */
+.vertical-line {
+  position: fixed;
+  width: 1px;
+  height: 30px;
+  background-color: #ffffff;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: -1;
+}
+
+.left-line {
+  left: 20px;
+}
+
+.right-line {
+  right: 20px;
+}
+
+/* Header styles */
+header {
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 40px;
+}
+
+h1 {
+  color: #ffffff;
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+  font-family: "Capitana", "Arial Black", sans-serif;
+}
+
+header p {
+  font-size: 20px;
+  color: #ffffff;
+  font-weight: 300;
+  opacity: 0.8;
+}
+
+/* Main content */
+main {
+  padding: 0;
+  max-width: 1000px;
+  margin: 0 auto 100px;
+}
+
+.questions-container {
+  width: 70%;
+  margin: 0 auto;
+}
+
+/* Question block styles */
+.question-block {
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: 150px;
+  aspect-ratio: auto;
+}
+
+.question-block:hover {
+  background-color: #333839;
+}
+
+/* First half of questions */
+.question-block:nth-child(-n + 6) {
+  /* Default style for first half */
+}
+
+/* Second half of questions - coming from right */
+.question-block:nth-child(n + 7) {
+  /* Remove special styles for second half */
+}
+
+.question-block:nth-child(n + 7):hover {
+  background-color: #333839;
+}
+
+.question-block:nth-child(n + 7) .question {
+  font-size: 18px; /* Same as other questions */
+}
+
+.question {
+  font-weight: 300;
+  color: #ffffff;
+  font-size: 18px;
+  font-family: "Inter", sans-serif;
+  letter-spacing: -0.5px;
+  line-height: 1.4;
+}
+
+.answer {
+  margin-top: 15px;
+  line-height: 1.8;
+  color: #ffffff;
+  font-weight: 300;
+  font-size: 14px;
+  opacity: 0.9;
+  padding-left: 15px;
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* List styles */
+ul,
+ol {
+  padding-left: 20px;
+  margin: 15px 0;
+  color: #ffffff;
+}
+
+li {
+  margin-bottom: 8px;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+/* For Capitana font fallback */
+@font-face {
+  font-family: "Capitana";
+  src: local("Arial Black");
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+  .questions-container {
+    width: 85%;
+  }
+
+  .corner-letter {
+    font-size: 120px;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+
+  header p {
+    font-size: 18px;
+  }
+
+  .question {
+    font-size: 16px;
+  }
+
+  .answer {
+    font-size: 12px;
+  }
+
+  .question-block:nth-child(n + 7) {
+    margin-left: 5%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .questions-container {
+    width: 90%;
+  }
+
+  .corner-letter {
+    font-size: 100px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  header p {
+    font-size: 16px;
+  }
+
+  .question {
+    font-size: 14px;
+  }
+
+  .question-block {
+    padding: 15px;
+  }
+
+  .question-block:nth-child(n + 7) {
+    transform: translateX(50px);
+  }
+
+  .question-block:nth-child(n + 7):hover {
+    transform: translateX(40px);
+  }
+}
