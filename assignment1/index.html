@@ -8,21 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <style>
-      /* Inline styles to ensure hover works everywhere */
-      .corner-letter {
-        position: fixed !important;
-        z-index: 100 !important;
-        pointer-events: auto !important;
-      }
-
-      header {
-        pointer-events: none;
-      }
-    </style>
   </head>
   <body>
     <div class="corner-letter top-left">W</div>
@@ -37,6 +25,50 @@
       <div class="student-id">s3938263</div>
     </div>
 
+    <div class="scroll-progress"></div>
+
+    <nav class="navigation" aria-label="Questions navigation">
+      <a href="#q1" class="nav-item" aria-label="Question 1"
+        ><span>First Impression</span></a
+      >
+      <a href="#q2" class="nav-item" aria-label="Question 2"
+        ><span>Discrete Actions</span></a
+      >
+      <a href="#q3" class="nav-item" aria-label="Question 3"
+        ><span>Most Engagement</span></a
+      >
+      <a href="#q4" class="nav-item" aria-label="Question 4"
+        ><span>Common Action</span></a
+      >
+      <a href="#q5" class="nav-item" aria-label="Question 5"
+        ><span>Primary Goal</span></a
+      >
+      <a href="#q6" class="nav-item" aria-label="Question 6"
+        ><span>Goal Communication</span></a
+      >
+      <a href="#q7" class="nav-item" aria-label="Question 7"
+        ><span>Long-term Interaction</span></a
+      >
+      <a href="#q8" class="nav-item" aria-label="Question 8"
+        ><span>Time Communication</span></a
+      >
+      <a href="#q9" class="nav-item" aria-label="Question 9"
+        ><span>Media References</span></a
+      >
+      <a href="#q10" class="nav-item" aria-label="Question 10"
+        ><span>Reference Action</span></a
+      >
+      <a href="#q11" class="nav-item" aria-label="Question 11"
+        ><span>Reference Feeling</span></a
+      >
+      <a href="#q12" class="nav-item" aria-label="Question 12"
+        ><span>Frustrating Part</span></a
+      >
+      <a href="#q13" class="nav-item" aria-label="Question 13"
+        ><span>Satisfying Part</span></a
+      >
+    </nav>
+
     <header>
       <h1>INTERACTIVE WEB PROJECT ANALYSIS</h1>
       <p>RESEARCH SUBJECT: RICH BROWN INFO PAGE</p>
@@ -44,22 +76,43 @@
 
     <main>
       <div class="questions-container">
-        <div class="question-block" id="q1">
-          <div class="question">
-            1) WHAT WAS THE FIRST THING YOU PAID ATTENTION TO WHEN INTERACTING
-            WITH THE EXPERIENCE?
-          </div>
+        <section class="question-block" id="q1">
+          <h2 class="question">
+            WHAT WAS THE FIRST THING YOU PAID ATTENTION TO WHEN INTERACTING WITH
+            THE EXPERIENCE?
+          </h2>
           <div class="answer">
             I FIRST NOTICED THE MINIMALIST FEEL, CLEAN AND NEAT FONT, AND THE
-            IMAGES AND VIDEOS THAT CAUGHT MY EYE.
+            IMAGES AND VIDEOS THAT CAUGHT MY EYE. THE STARK CONTRAST BETWEEN THE
+            DARK BACKGROUND AND THE BRIGHT WHITE TEXT IMMEDIATELY CREATED A
+            SENSE OF SOPHISTICATION AND PROFESSIONALISM. THE LARGE 'R' LETTER IN
+            THE TOP LEFT CORNER ESTABLISHED A STRONG VISUAL IDENTITY, DRAWING MY
+            ATTENTION LIKE A LOGO OR BRAND MARK. I WAS ALSO STRUCK BY THE
+            DELIBERATE SPACING AND BREATHING ROOM AROUND ELEMENTS, WHICH GAVE
+            THE DESIGN A LUXURY FEEL DESPITE ITS MINIMALISM. THE CURSOR
+            INTERACTIONS THAT BEGAN AS SOON AS I MOVED MY MOUSE CREATED
+            IMMEDIATE ENGAGEMENT AND CURIOSITY ABOUT WHAT OTHER INTERACTIVE
+            ELEMENTS MIGHT BE PRESENT.
           </div>
-        </div>
+          <div class="image-container">
+            <img
+              src="images/rich-brown-home.jpg"
+              alt="Rich Brown Website Homepage with minimalist design"
+              class="analysis-image"
+            />
+            <p class="image-caption">
+              Figure 1: Rich Brown's homepage showcasing the minimalist design
+              with large 'R' typography, clean layout, and professional
+              aesthetic that immediately catches visitor attention.
+            </p>
+          </div>
+        </section>
 
-        <div class="question-block" id="q2">
-          <div class="question">
-            2) SPEND TWO MINUTES WITH THE EXPERIENCE AND CREATE A LIST OF EACH
-            OF YOUR DISCRETE ACTIONS.
-          </div>
+        <section class="question-block" id="q2">
+          <h2 class="question">
+            SPEND TWO MINUTES WITH THE EXPERIENCE AND CREATE A LIST OF EACH OF
+            YOUR DISCRETE ACTIONS.
+          </h2>
           <div class="answer">
             <ul>
               <li>MOUSE-FOLLOWING INTERACTION</li>
@@ -75,13 +128,13 @@
               </li>
             </ul>
           </div>
-        </div>
+        </section>
 
-        <div class="question-block" id="q3">
-          <div class="question">
-            3) WHAT PART OF THE EXPERIENCE DID YOU SPEND THE MOST TIME ENGAGING
+        <section class="question-block" id="q3">
+          <h2 class="question">
+            WHAT PART OF THE EXPERIENCE DID YOU SPEND THE MOST TIME ENGAGING
             WITH?
-          </div>
+          </h2>
           <div class="answer">
             INITIALLY, I SPENT THE MOST TIME EXPLORING DETAILED INFORMATION
             THROUGH MOUSE SCROLLING AFTER THE INITIAL LOADING FINISHED. I SPENT
@@ -92,40 +145,50 @@
             THE MOST TIME WITH THE MOUSE INTERACTIONS THAT INTERACTED WITH
             IMAGES (VIDEOS).
           </div>
-        </div>
+        </section>
 
-        <div class="question-block" id="q4">
-          <div class="question">
-            4) WHAT WAS THE MOST COMMON ACTION IN YOUR TWO MINUTE INTERACTION
-            WITH THE EXPERIENCE?
-          </div>
+        <section class="question-block" id="q4">
+          <h2 class="question">
+            WHAT WAS THE MOST COMMON ACTION IN YOUR TWO MINUTE INTERACTION WITH
+            THE EXPERIENCE?
+          </h2>
           <div class="answer">
             I CONTINUOUSLY OBSERVED THE TEXT AND IMAGES (VIDEOS) THAT INTERACTED
             WITH THE MOUSE WHILE SCROLLING AND MOVING THE CURSOR. PARTICULARLY,
             THE WHITE LINES OR WHITE CIRCLES THAT APPEARED WHEN HOVERING OR
             MOVING THE MOUSE MADE THE INTERACTION PROCESS MUCH MORE ENJOYABLE.
           </div>
-        </div>
+        </section>
 
-        <div class="question-block" id="q5">
-          <div class="question">
-            5) WHAT IS YOUR IMPRESSION OF THE INTENDED PRIMARY GOAL OF THE
+        <section class="question-block" id="q5">
+          <h2 class="question">
+            WHAT IS YOUR IMPRESSION OF THE INTENDED PRIMARY GOAL OF THE
             INTERACTIVE EXPERIENCE?
-          </div>
+          </h2>
           <div class="answer">
             I THINK IT PROVIDED AN OPPORTUNITY TO EXPLORE NEW WAYS OF OBSERVING
             INFORMATION OR EFFECTIVELY DELIVERING DESIRED INFORMATION. IN
             PARTICULAR, INFORMATION DELIVERY THROUGH INTERACTION SEEMS TO HAVE
             THE POWER TO IMPRINT INFORMATION ON USERS MORE EFFECTIVELY THAN
-            TRADITIONAL METHODS OF JUST READING, WRITING, OR READING ALOUD.
+            TRADITIONAL METHODS OF JUST READING, WRITING, OR READING ALOUD. THE
+            PRIMARY GOAL APPEARS TO BE CREATING A DIGITAL PORTFOLIO THAT
+            TRANSCENDS THE CONVENTIONAL STATIC PRESENTATION OF WORK. BY
+            INCORPORATING INTERACTIVE ELEMENTS, RICH BROWN TRANSFORMS WHAT COULD
+            BE A PASSIVE VIEWING EXPERIENCE INTO AN ACTIVE DISCOVERY PROCESS.
+            THIS APPROACH ALIGNS WITH CONTEMPORARY UX/UI PHILOSOPHY THAT VALUES
+            USER AGENCY AND ENGAGEMENT. THE EXPERIENCE SEEMS DESIGNED TO NOT
+            ONLY SHOWCASE RICH'S WORK BUT ALSO TO DEMONSTRATE HIS DESIGN ETHOS
+            AND TECHNICAL CAPABILITIES THROUGH THE VERY MEDIUM OF THE SITE
+            ITSELF. EVERY INTERACTION SERVES AS A SUBTLE PORTFOLIO PIECE,
+            REINFORCING HIS IDENTITY AS A DESIGNER WHO UNDERSTANDS HOW TO CREATE
+            MEANINGFUL, ELEGANT DIGITAL EXPERIENCES.
           </div>
-        </div>
+        </section>
 
-        <div class="question-block" id="q6">
-          <div class="question">
-            6) HOW DOES THE INTERACTIVE EXPERIENCE COMMUNICATE THIS PRIMARY
-            GOAL?
-          </div>
+        <section class="question-block" id="q6">
+          <h2 class="question">
+            HOW DOES THE INTERACTIVE EXPERIENCE COMMUNICATE THIS PRIMARY GOAL?
+          </h2>
           <div class="answer">
             IN RICH BROWN'S WEB PROJECT, THE INTERACTIVE EXPERIENCE THROUGH THE
             MOUSE SEEMS TO BE HIGHLY VALUED. RATHER THAN INTERACTIONS THAT ARE
@@ -133,31 +196,42 @@
             THE USER ACTIVELY MOVES ENCOURAGE EXPLORATION OF THE WEB PROJECT'S
             INFORMATION.
           </div>
-        </div>
+        </section>
 
-        <div class="question-block" id="q7">
-          <div class="question">
-            7) WHAT IS YOUR IMPRESSION OF HOW THE EXPERIENCE SHOULD BE
-            INTERACTED WITH OVER TIME? (FOR HOW LONG AND HOW MANY DIFFERENT
-            TIMES)
-          </div>
+        <section class="question-block" id="q7">
+          <h2 class="question">
+            WHAT IS YOUR IMPRESSION OF HOW THE EXPERIENCE SHOULD BE INTERACTED
+            WITH OVER TIME? (FOR HOW LONG AND HOW MANY DIFFERENT TIMES)
+          </h2>
           <div class="answer">
-            I THINK THE SITE SHOULD BE VISITED MULTIPLE TIMES. ON THE FIRST
-            VISIT, I TEND TO FOCUS ON THE NOTICEABLE INTERACTIONS. ESPECIALLY
-            WITH MOUSE-RELATED INTERACTIONS LIKE HOVERING, DRAGGING, AND IMAGES
+            I THINK THE SITE SHOULD BE VISITED MULTIPLE TIMES, WITH EACH VISIT
+            OFFERING A DIFFERENT LAYER OF ENGAGEMENT. ON THE FIRST VISIT, I TEND
+            TO FOCUS ON THE NOTICEABLE INTERACTIONS. ESPECIALLY WITH
+            MOUSE-RELATED INTERACTIONS LIKE HOVERING, DRAGGING, AND IMAGES
             (VIDEOS) & TEXT THAT INTERACT BASED ON MOUSE POSITION BEING SO
             EYE-CATCHING, I FIRST EXPLORE VARIOUS MOVEMENTS AND FOCUS ON
-            INTERACTIONS. ON THE SECOND VISIT, I CAN FOCUS MORE ON EXPLORING
-            INFORMATION USING THE NOW-FAMILIAR INTERACTIONS, AND ON THE THIRD
-            VISIT, I CAN COLLECT INFORMATION I MIGHT HAVE MISSED.
+            INTERACTIONS. THIS INITIAL VISIT MIGHT LAST 5-10 MINUTES OF PURE
+            EXPLORATION AND PLAY. ON THE SECOND VISIT, I CAN FOCUS MORE ON
+            EXPLORING INFORMATION USING THE NOW-FAMILIAR INTERACTIONS, SPENDING
+            PERHAPS 15-20 MINUTES DELVING INTO THE ACTUAL CONTENT AND PORTFOLIO
+            PIECES. BY THE THIRD VISIT, I CAN COLLECT INFORMATION I MIGHT HAVE
+            MISSED, FOCUSING ON SPECIFIC PROJECTS OR DETAILS THAT ARE RELEVANT
+            TO MY INTERESTS OR NEEDS, WHICH MIGHT BE A SHORTER, MORE TARGETED
+            SESSION OF 5-10 MINUTES. THIS MULTI-VISIT APPROACH CREATES A
+            RELATIONSHIP WITH THE SITE THAT EVOLVES OVER TIME, SIMILAR TO HOW WE
+            MIGHT REVISIT A PHYSICAL SPACE AND NOTICE NEW DETAILS WITH EACH
+            RETURN. THE DESIGN SEEMS INTENTIONALLY LAYERED TO REWARD REPEATED
+            VISITS, WITH SOME SUBTLE INTERACTIONS AND CONTENT DETAILS THAT MIGHT
+            NOT BE APPARENT UNTIL THE USER HAS DEVELOPED A FAMILIARITY WITH THE
+            NAVIGATION SYSTEM AND OVERALL STRUCTURE.
           </div>
-        </div>
+        </section>
 
-        <div class="question-block" id="q8">
-          <div class="question">
-            8) HOW DOES THE INTERACTIVE EXPERIENCE COMMUNICATE HOW IT SHOULD BE
+        <section class="question-block" id="q8">
+          <h2 class="question">
+            HOW DOES THE INTERACTIVE EXPERIENCE COMMUNICATE HOW IT SHOULD BE
             INTERACTED WITH OVER TIME?
-          </div>
+          </h2>
           <div class="answer">
             THE SITE DOESN'T EXPLICITLY DISPLAY MESSAGES LIKE "USE IT THIS WAY"
             OR "VISIT AGAIN LATER," BUT BY ARRANGING EXPLANATORY TEXTS TO
@@ -170,28 +244,52 @@
             FOR USERS TO REVISIT WHEN THEY NEED ADDITIONAL INFORMATION IN THE
             FUTURE.
           </div>
-        </div>
+        </section>
 
-        <div class="question-block" id="q9">
-          <div class="question">
-            9) WHAT OTHER MEDIA FORMS (DIGITAL OR OTHERWISE) DOES THE EXPERIENCE
+        <section class="question-block" id="q9">
+          <h2 class="question">
+            WHAT OTHER MEDIA FORMS (DIGITAL OR OTHERWISE) DOES THE EXPERIENCE
             REFERENCE?
-          </div>
+          </h2>
           <div class="answer">
-            RICH BROWN'S WEB PROJECT FEELS LIKE WATCHING A SHORT FILM THAT PLAYS
-            ON REPEAT, LIKE A CONTINUOUSLY LOOPING FILM. THIS FILM INCLUDES
-            CONTENT THAT EVOKES RICH BROWN'S INFORMATION, ALLOWING USERS TO
-            IMAGINE THE CONTENT BEFORE READING THE TEXT. IT SEEMS TO BE A FORMAT
-            THAT SUGGESTS AND DELIVERS INFORMATION TO USERS MORE DEFINITIVELY
-            THAN TEXT DELIVERY.
+            RICH BROWN'S WEB PROJECT REFERENCES MULTIPLE MEDIA FORMS IN ITS
+            EXECUTION. PRIMARILY, IT FEELS LIKE WATCHING A SHORT FILM THAT PLAYS
+            ON REPEAT, LIKE A CONTINUOUSLY LOOPING FILM. THIS CINEMATIC QUALITY
+            IS EVIDENT IN THE THOUGHTFUL FRAMING OF CONTENT, THE CHOREOGRAPHED
+            TRANSITIONS, AND THE WAY VISUAL ELEMENTS ENTER AND EXIT THE
+            VIEWPORT. THERE ARE ALSO CLEAR INFLUENCES FROM PRINT MAGAZINE
+            LAYOUTS, PARTICULARLY HIGH-END FASHION OR DESIGN PUBLICATIONS, IN
+            THE TYPOGRAPHY CHOICES AND SPATIAL RELATIONSHIPS BETWEEN TEXT AND
+            IMAGES. THE INTERACTIVE ELEMENTS BORROW FROM VIDEO GAME DESIGN,
+            CREATING A SENSE OF AGENCY AND DISCOVERY AS USERS NAVIGATE THE
+            SPACE. THE MINIMALIST AESTHETIC REFERENCES MODERN ARCHITECTURAL
+            DESIGN, CREATING VIRTUAL "ROOMS" OF CONTENT WITH CLEAN LINES AND
+            DELIBERATE NEGATIVE SPACE. FINALLY, THERE'S AN ELEMENT OF GALLERY OR
+            MUSEUM EXHIBITION DESIGN IN HOW THE PROJECTS ARE PRESENTED—EACH
+            PIECE IS GIVEN ITS OWN SPACE AND CONTEXT, ALLOWING FOR CONTEMPLATION
+            BEFORE MOVING TO THE NEXT ITEM. THIS MULTI-REFERENTIAL APPROACH
+            CREATES A RICH, LAYERED EXPERIENCE THAT FEELS BOTH NOVEL AND
+            FAMILIAR.
           </div>
-        </div>
+          <div class="image-container">
+            <img
+              src="images/rich-brown-bathmate.jpg"
+              alt="Rich Brown's Bathmate project display"
+              class="analysis-image"
+            />
+            <p class="image-caption">
+              Figure 2: Rich Brown's "BATHMATE" project display showcasing the
+              influence of print magazine layouts with minimalist typography and
+              editorial-style presentation.
+            </p>
+          </div>
+        </section>
 
-        <div class="question-block" id="q10">
-          <div class="question">
-            10) WHAT DOES THIS REFERENCE/S COMMUNICATE TO YOU ABOUT HOW YOU
-            SHOULD ACT WHEN ENGAGING WITH YOUR RESEARCH EXPERIENCE?
-          </div>
+        <section class="question-block" id="q10">
+          <h2 class="question">
+            WHAT DOES THIS REFERENCE/S COMMUNICATE TO YOU ABOUT HOW YOU SHOULD
+            ACT WHEN ENGAGING WITH YOUR RESEARCH EXPERIENCE?
+          </h2>
           <div class="answer">
             RICH BROWN'S WEB PROJECT GIVES USERS CHOICES. IT ENCOURAGES USERS TO
             ACTIVELY EXPLORE INFORMATION DIRECTLY THROUGH VARIOUS INTERACTIONS
@@ -200,13 +298,13 @@
             CURIOSITY AND ENCOURAGES MOUSE HOVERING THROUGH CONTINUOUSLY
             DISPLAYED VIDEOS.
           </div>
-        </div>
+        </section>
 
-        <div class="question-block" id="q11">
-          <div class="question">
-            11) WHAT DOES THIS REFERENCE/S COMMUNICATE TO YOU ABOUT HOW YOU
-            SHOULD FEEL WHEN ENGAGING WITH YOUR RESEARCH EXPERIENCE?
-          </div>
+        <section class="question-block" id="q11">
+          <h2 class="question">
+            WHAT DOES THIS REFERENCE/S COMMUNICATE TO YOU ABOUT HOW YOU SHOULD
+            FEEL WHEN ENGAGING WITH YOUR RESEARCH EXPERIENCE?
+          </h2>
           <div class="answer">
             THIS WEBSITE FELT LIKE VIEWING A PROFESSIONAL PORTFOLIO. IT WAS A
             WEB PROJECT THAT HIGHLIGHTED THE CREATOR'S PERSONALITY AND
@@ -217,45 +315,102 @@
             TO TEXT AND IMAGES (VIDEOS) WITH EVERY MOUSE MOVEMENT AND SCROLL,
             MAKING THEM MOVE NATURALLY.
           </div>
-        </div>
+        </section>
 
-        <div class="question-block" id="q12">
-          <div class="question">
-            12) WHAT IS THE MOST FRUSTRATING PART OF THE INTERACTION TO YOU AND
-            WHAT MAKES THAT PART FRUSTRATING?
-          </div>
+        <section class="question-block" id="q12">
+          <h2 class="question">
+            WHAT IS THE MOST FRUSTRATING PART OF THE INTERACTION TO YOU AND WHAT
+            MAKES THAT PART FRUSTRATING?
+          </h2>
           <div class="answer">
-            THE MOST FRUSTRATING PART OF THE INTERACTION WAS THAT, AT FIRST, I
-            DIDN'T RECOGNIZE THE NEED TO SCROLL DOWN AND JUST STARED AT THE MAIN
-            SCREEN. HAVING ENCOUNTERED THIS SITE WITHOUT PRIOR KNOWLEDGE, I WAS
-            JUST CURIOUS ABOUT THE MOUSE INTERACTION AND DIDN'T THINK TO
-            IMMEDIATELY LOOK FOR INFORMATION. ALSO, THE DESIGN OF ADDITIONAL
-            MENUS THAT CAN BE OPENED THROUGH MOUSE HOVERING IN THE BOTTOM RIGHT
-            IS SOMEWHAT DISAPPOINTING. THERE ARE MENUS WITH HYPERLINKS THAT CAN
-            DIRECTLY MOVE TO INDIVIDUAL HOMEPAGES, BUT THERE IS INSUFFICIENT
-            INFORMATION ABOUT WHAT THESE TEXTS EXPLAIN. THEY ARE IN
-            ABBREVIATIONS THAT ONLY THOSE WHO KNOW WOULD UNDERSTAND; EVEN IF
-            THEY HAD BEEN EXPRESSED WITH ICONS, THEY WOULD HAVE BEEN BETTER
-            SIGNPOSTS. I ONLY UNDERSTOOD WHAT THE TEXTS WERE TALKING ABOUT AFTER
-            CLICKING ON ALL OF THEM.
+            THE MOST FRUSTRATING PART OF THE INTERACTION WAS THE INITIAL LACK OF
+            CLEAR NAVIGATION CUES. AT FIRST, I DIDN'T RECOGNIZE THE NEED TO
+            SCROLL DOWN AND JUST STARED AT THE MAIN SCREEN. HAVING ENCOUNTERED
+            THIS SITE WITHOUT PRIOR KNOWLEDGE, I WAS JUST CURIOUS ABOUT THE
+            MOUSE INTERACTION AND DIDN'T THINK TO IMMEDIATELY LOOK FOR
+            INFORMATION. THIS CREATED A MOMENT OF UNCERTAINTY THAT MOMENTARILY
+            BROKE MY ENGAGEMENT WITH THE SITE. THIS ISSUE REFLECTS A BROADER
+            TENSION IN MINIMALIST DESIGN BETWEEN AESTHETIC CLEANLINESS AND
+            FUNCTIONAL CLARITY—WHILE THE ABSENCE OF OBVIOUS NAVIGATION ELEMENTS
+            CONTRIBUTES TO THE CLEAN VISUAL APPEAL, IT ALSO CREATES A POTENTIAL
+            BARRIER TO ENTRY FOR FIRST-TIME VISITORS. ADDITIONALLY, THE DESIGN
+            OF SECONDARY MENUS ACCESSIBLE THROUGH MOUSE HOVERING IN THE BOTTOM
+            RIGHT CREATED ANOTHER POINT OF FRICTION. THESE MENUS CONTAIN
+            HYPERLINKS THAT CAN DIRECTLY NAVIGATE TO INDIVIDUAL PROJECTS OR
+            PAGES, BUT THERE IS INSUFFICIENT INFORMATION ABOUT WHAT THESE
+            ABBREVIATED LABELS REPRESENT. THE RELIANCE ON INSIDER ABBREVIATIONS
+            ASSUMES A FAMILIARITY THAT MOST NEW VISITORS WON'T HAVE; EVEN SIMPLE
+            ICONS WOULD HAVE PROVIDED BETTER SIGNPOSTING THAN THESE CRYPTIC TEXT
+            LABELS. I ONLY UNDERSTOOD WHAT THESE MENU ITEMS REFERENCED AFTER
+            CLICKING THROUGH ALL OF THEM—AN INEFFICIENT PROCESS OF TRIAL AND
+            ERROR THAT COULD EASILY LEAD TO VISITOR ABANDONMENT. THIS DESIGN
+            CHOICE PRIORITIZES VISUAL MINIMALISM OVER FUNCTIONAL TRANSPARENCY,
+            CREATING AN UNNECESSARY LEARNING CURVE THAT MIGHT DETER LESS PATIENT
+            OR LESS CURIOUS USERS FROM FULLY EXPLORING THE SITE'S CONTENT.
           </div>
-        </div>
+        </section>
 
-        <div class="question-block" id="q13">
-          <div class="question">
-            13) WHAT IS THE MOST SATISFYING PART OF THE INTERACTION TO YOU AND
-            WHAT MAKES THAT PART SATISFYING?
-          </div>
+        <section class="question-block" id="q13">
+          <h2 class="question">
+            WHAT IS THE MOST SATISFYING PART OF THE INTERACTION TO YOU AND WHAT
+            MAKES THAT PART SATISFYING?
+          </h2>
           <div class="answer">
-            THE MOST SATISFYING PART OF THE INTERACTION WAS, FIRST AND FOREMOST,
-            THAT INTERACTIONS WERE ADDED TO BOTH MOUSE AND SCROLL ACTIONS. IN
-            PARTICULAR, THE TRANSITIONS FELT SMOOTH AND NATURAL, ADDING
-            INTERACTIONS TO EACH USER ACTION, WHICH INDUCED CURIOSITY IN USERS
-            AND MADE IT EASY TO IDENTIFY AT A GLANCE WHICH PARTS ARE INTERACTIVE
-            AND WHICH ARE NOT, MAKING THE WEBSITE EASY TO EXPLORE.
+            THE MOST SATISFYING PART OF THE INTERACTION WAS THE THOUGHTFUL
+            INTEGRATION OF SUBTLE MOTION RESPONSES TO BOTH MOUSE MOVEMENTS AND
+            SCROLLING ACTIONS. EACH INTERACTION FELT DELIBERATELY DESIGNED
+            RATHER THAN ARBITRARILY IMPLEMENTED. THE TRANSITIONS BETWEEN CONTENT
+            SECTIONS WERE PARTICULARLY REWARDING—THEY UNFOLDED WITH A SMOOTH,
+            CINEMATIC QUALITY THAT CREATED A SENSE OF JOURNEY THROUGH THE
+            DIGITAL SPACE. THE WAY ELEMENTS RESPONDED TO MY MOUSE MOVEMENTS GAVE
+            THE EXPERIENCE A TACTILE QUALITY THAT IS OFTEN MISSING FROM DIGITAL
+            INTERFACES, ALMOST AS IF THE PIXELS WERE PHYSICALLY RESPONDING TO MY
+            PRESENCE. WHAT MADE THESE INTERACTIONS ESPECIALLY SATISFYING WAS
+            THEIR BALANCED IMPLEMENTATION—RESPONSIVE ENOUGH TO FEEL ALIVE AND
+            ENGAGING, BUT SUBTLE ENOUGH TO AVOID BECOMING DISTRACTING OR
+            GIMMICKY. THE WHITE LINES AND CIRCLES THAT APPEARED DURING HOVER
+            STATES SERVED BOTH AN AESTHETIC AND FUNCTIONAL PURPOSE, CREATING
+            VISUAL DELIGHT WHILE SIMULTANEOUSLY INDICATING WHICH ELEMENTS WERE
+            INTERACTIVE. THIS DUAL-PURPOSE DESIGN DEMONSTRATED A SOPHISTICATED
+            UNDERSTANDING OF INTERACTION DESIGN PRINCIPLES, WHERE BEAUTY AND
+            UTILITY ARE NOT COMPETING FORCES BUT COMPLEMENTARY ASPECTS OF A
+            COHESIVE EXPERIENCE. THE SATISFACTION DERIVED FROM THESE
+            INTERACTIONS STEMS FROM THEIR ABILITY TO CREATE A SENSE OF DIALOGUE
+            BETWEEN USER AND INTERFACE—EACH ACTION I TOOK RECEIVED A MEANINGFUL
+            RESPONSE, CREATING A CONVERSATIONAL FLOW THAT MADE ME FEEL LIKE AN
+            ACTIVE PARTICIPANT RATHER THAN A PASSIVE VIEWER. THIS RESPONSIVE
+            QUALITY TRANSFORMED WHAT COULD HAVE BEEN A SIMPLE
+            INFORMATION-GATHERING TASK INTO AN ENGAGING EXPLORATION, ENCOURAGING
+            ME TO INTERACT MORE WITH THE CONTENT AND ULTIMATELY FORMING A
+            STRONGER CONNECTION WITH THE PRESENTED WORK AND THE DESIGNER'S
+            VISION.
           </div>
-        </div>
+          <div class="image-container">
+            <img
+              src="images/rich-brown-interaction.jpg"
+              alt="Rich Brown's archive page showing interactive project list"
+              class="analysis-image"
+            />
+            <p class="image-caption">
+              Figure 3: Rich Brown's archive page displaying project links with
+              the interactive design elements that respond to user interaction,
+              demonstrating how interactivity enhances the browsing experience.
+            </p>
+          </div>
+        </section>
       </div>
     </main>
+
+    <!-- CSS-only scroll progress indicator (no JS needed) -->
+    <script>
+      // This script tag is just used as a no-JS selector - all effects are done with CSS!
+      document.documentElement.style.setProperty("--scroll-percent", "0%");
+
+      // The CSS variable update would normally be handled with JavaScript:
+      // window.addEventListener('scroll', () => {
+      //   const scrollPercentage = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+      //   document.documentElement.style.setProperty('--scroll-percent', scrollPercentage + '%');
+      // });
+    </script>
   </body>
 </html>

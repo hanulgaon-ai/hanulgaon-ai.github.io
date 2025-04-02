@@ -1,6 +1,40 @@
-#hover-overlay {
-  display: none;
-} /* Rich Brown inspired styles with interaction simulation */
+/* CSS Variables for consistent theming */
+:root {
+  --bg-color: #6f8d93;
+  --text-color: #ffffff;
+  --accent-color: #333839;
+  --border-color: rgba(255, 255, 255, 0.3);
+  --highlight-color: rgba(255, 255, 255, 0.1);
+  --transition-speed: 0.3s;
+}
+
+/* Override any browser defaults that might affect text color */
+html,
+body,
+a,
+div,
+p,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+li {
+  color: #ffffff;
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+  color: #ffffff;
+  text-decoration: none;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -9,18 +43,19 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
 }
 
 body {
   font-family: "Inter", sans-serif;
   line-height: 1.6;
-  color: #ffffff;
+  color: var(--text-color);
   max-width: 100%;
   margin: 0;
   padding: 0;
-  background-color: #6f8d93;
+  background-color: var(--bg-color);
   overflow-x: hidden;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 /* Assignment info */
@@ -29,66 +64,88 @@ body {
   top: 20px;
   right: 20px;
   font-size: 10px;
-  color: rgba(255, 255, 255, 0.5);
+  color: #ffffff;
   z-index: 100;
   text-align: right;
+  backdrop-filter: blur(5px);
+  padding: 5px;
+  border-radius: 3px;
 }
 
 .student-info {
   margin-top: 4px;
   font-weight: 300;
+  color: #ffffff;
 }
 
 .student-id {
   margin-top: 2px;
   font-size: 9px;
+  color: #ffffff;
 }
 
 /* Corner letters */
 .corner-letter {
   position: fixed;
   font-family: "Inter", sans-serif;
-  font-size: 180px;
+  font-size: 160px;
   font-weight: 700;
-  color: #ffffff;
-  z-index: -1;
+  color: #ffffff !important;
+  z-index: 1;
   margin: 0;
   padding: 0;
   line-height: 0.7;
-  transition: all 0.3s ease;
+  transition: all var(--transition-speed) ease;
+  opacity: 0.4;
+  mix-blend-mode: normal;
+  cursor: pointer;
+}
+
+.corner-letter:hover {
+  opacity: 0.9;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
 }
 
 .top-left {
   top: 3px;
   left: -4px;
+  transition: all var(--transition-speed) ease;
 }
 
 .bottom-left {
   bottom: 3px;
-  left: -13px;
+  left: -12px;
+  transition: all var(--transition-speed) ease;
 }
 
-.corner-letter:hover {
-  margin: 15px;
+.top-left:hover {
+  left: 26px; /* 원래 위치에서 30px 오른쪽으로 이동 */
+  top: 33px; /* 원래 위치에서 30px 아래로 이동 */
+}
+
+.bottom-left:hover {
+  left: 18px; /* 원래 위치에서 30px 오른쪽으로 이동 */
+  bottom: 33px; /* 원래 위치에서 30px 위로 이동 */
 }
 
 /* Vertical lines */
 .vertical-line {
   position: fixed;
-  width: 1px;
+  width: 2px;
   height: 30px;
-  background-color: #ffffff;
+  background-color: var(--text-color);
   top: 50%;
   transform: translateY(-50%);
   z-index: -1;
+  opacity: 0.5;
 }
 
 .left-line {
-  left: 20px;
+  left: 60px;
 }
 
 .right-line {
-  right: 20px;
+  right: 60px;
 }
 
 /* Header styles */
@@ -100,22 +157,104 @@ header {
   justify-content: center;
   align-items: center;
   padding: 0 40px;
+  position: relative;
+}
+
+header::after {
+  content: "";
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 30px;
+  border: 2px solid var(--text-color);
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0) translateX(-50%);
+  }
+  40% {
+    transform: translateY(-20px) translateX(-50%);
+  }
+  60% {
+    transform: translateY(-10px) translateX(-50%);
+  }
 }
 
 h1 {
-  color: #ffffff;
+  color: var(--text-color);
   font-size: 48px;
   font-weight: 700;
   margin-bottom: 20px;
   letter-spacing: -0.5px;
-  font-family: "Capitana", "Arial Black", sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 header p {
   font-size: 20px;
-  color: #ffffff;
+  color: var(--text-color);
   font-weight: 300;
   opacity: 0.8;
+}
+
+/* Navigation */
+.navigation {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.nav-item {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: all var(--transition-speed) ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.nav-item:hover,
+.nav-item:focus {
+  background-color: #ffffff;
+  transform: scale(1.5);
+}
+
+.nav-item span {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 10px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-speed) ease;
+  color: #ffffff !important;
+  font-weight: 500;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+}
+
+.nav-item:hover span,
+.nav-item:focus span {
+  opacity: 1;
 }
 
 /* Main content */
@@ -128,61 +267,78 @@ main {
 .questions-container {
   width: 70%;
   margin: 0 auto;
+  counter-reset: question;
 }
 
 /* Question block styles */
 .question-block {
-  margin-bottom: 30px;
-  padding: 20px;
-  border-radius: 0;
-  cursor: pointer;
+  margin-bottom: 60px;
+  padding: 30px;
+  border-radius: 4px;
+  cursor: default;
   display: flex;
   flex-direction: column;
-  height: auto;
   min-height: 150px;
-  aspect-ratio: auto;
+  transition: all var(--transition-speed) ease;
+  position: relative;
+  border-left: 0px solid var(--text-color);
+  background-color: rgba(255, 255, 255, 0.03);
 }
 
 .question-block:hover {
-  background-color: #333839;
+  background-color: var(--accent-color);
+  border-left: 4px solid var(--text-color);
+  transform: translateX(5px);
 }
 
-/* First half of questions */
-.question-block:nth-child(-n + 6) {
-  /* Default style for first half */
-}
-
-/* Second half of questions - coming from right */
-.question-block:nth-child(n + 7) {
-  /* Remove special styles for second half */
-}
-
-.question-block:nth-child(n + 7):hover {
-  background-color: #333839;
-}
-
-.question-block:nth-child(n + 7) .question {
-  font-size: 18px; /* Same as other questions */
+.question-block::before {
+  counter-increment: question;
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 30px;
+  width: 1px;
+  height: calc(100% - 30px);
+  background-color: var(--border-color);
+  opacity: 0.5;
 }
 
 .question {
-  font-weight: 300;
-  color: #ffffff;
+  font-weight: 500;
+  color: var(--text-color);
   font-size: 18px;
   font-family: "Inter", sans-serif;
   letter-spacing: -0.5px;
   line-height: 1.4;
+  margin-bottom: 20px;
+  position: relative;
+  padding-left: 10px;
+}
+
+.question::before {
+  content: counter(question) ")";
+  position: absolute;
+  left: -30px;
+  top: 0;
+  font-size: 16px;
+  font-weight: 700;
+  opacity: 0.5;
 }
 
 .answer {
   margin-top: 15px;
   line-height: 1.8;
-  color: #ffffff;
+  color: var(--text-color);
   font-weight: 300;
   font-size: 14px;
   opacity: 0.9;
   padding-left: 15px;
-  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-left: 1px solid var(--border-color);
+  transition: all var(--transition-speed) ease;
+}
+
+.question-block:hover .answer {
+  border-left: 1px solid var(--text-color);
 }
 
 /* List styles */
@@ -190,7 +346,7 @@ ul,
 ol {
   padding-left: 20px;
   margin: 15px 0;
-  color: #ffffff;
+  color: var(--text-color);
 }
 
 li {
@@ -199,12 +355,60 @@ li {
   font-size: 14px;
 }
 
-/* For Capitana font fallback */
-@font-face {
-  font-family: "Capitana";
-  src: local("Arial Black");
-  font-weight: bold;
-  font-style: normal;
+/* Scroll indicator */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    var(--text-color) var(--scroll-percent, 0%),
+    transparent 0
+  );
+  z-index: 100;
+}
+
+/* Image styling */
+.image-container {
+  margin: 30px 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.analysis-image {
+  max-width: 90%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all var(--transition-speed) ease;
+}
+
+.analysis-image:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.image-caption {
+  font-size: 12px;
+  color: #ffffff;
+  margin-top: 10px;
+  font-style: italic;
+  max-width: 80%;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .analysis-image {
+    max-width: 100%;
+  }
+
+  .image-caption {
+    max-width: 95%;
+  }
 }
 
 /* Responsive design */
@@ -233,41 +437,7 @@ li {
     font-size: 12px;
   }
 
-  .question-block:nth-child(n + 7) {
-    margin-left: 5%;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .questions-container {
-    width: 90%;
-  }
-
-  .corner-letter {
-    font-size: 100px;
-  }
-
-  h1 {
-    font-size: 28px;
-  }
-
-  header p {
-    font-size: 16px;
-  }
-
-  .question {
-    font-size: 14px;
-  }
-
-  .question-block {
-    padding: 15px;
-  }
-
-  .question-block:nth-child(n + 7) {
-    transform: translateX(50px);
-  }
-
-  .question-block:nth-child(n + 7):hover {
-    transform: translateX(40px);
+  .navigation {
+    display: none;
   }
 }
