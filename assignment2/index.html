@@ -3,10 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Music Video Player</title>
-    <!-- add the font family of your choice -->
+    <title>Cosmic Study Music Player</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="reset.css" />
@@ -16,87 +15,92 @@
   <body>
     <!-- Header Section -->
     <header>
-      <h1>Music Video Player</h1>
+      <h1>Cosmic Study Music Player</h1>
+
+      <!-- 타이머 토글 버튼 -->
+      <div class="timer-toggle">
+        <button id="timer-toggle-btn" title="Show/Hide Timer">
+          <span>⏱</span>
+        </button>
+      </div>
+
+      <div class="right-controls">
+        <button id="theme-toggle" title="Toggle Dark/Light Mode">
+          <span class="theme-icon">◐</span>
+        </button>
+      </div>
     </header>
 
-    <!-- Navigation Section -->
-    <nav>
-      <ul>
-        <li><a href="#" class="active">Home</a></li>
-        <li><a href="#">Videos</a></li>
-        <li><a href="#">Music</a></li>
-        <li><a href="#">Playlists</a></li>
-      </ul>
-    </nav>
+    <!-- 타이머 패널 (헤더 아래 절대 위치) -->
+    <div id="timer-panel" class="timer-panel hidden">
+      <div class="timer-display">
+        <span id="timer-minutes">00</span>:<span id="timer-seconds">00</span>
+      </div>
+      <div class="timer-controls">
+        <button
+          id="timer-start-stop"
+          class="timer-btn icon-btn"
+          title="Start/Stop Timer"
+        >
+          <span id="timer-start-stop-icon">▶</span>
+        </button>
+        <button id="timer-reset" class="timer-btn icon-btn" title="Reset Timer">
+          <span>↺</span>
+        </button>
+        <button
+          id="timer-mode"
+          class="timer-btn icon-btn"
+          title="Switch Timer Mode"
+        >
+          <span>⏱</span>
+        </button>
+      </div>
+      <div id="timer-mode-label">Mode: Stopwatch</div>
+      <div id="countdown-settings" class="hidden">
+        <label for="countdown-minutes">Minutes:</label>
+        <input
+          type="number"
+          id="countdown-minutes"
+          min="1"
+          max="120"
+          value="25"
+        />
+        <button id="set-countdown" class="timer-btn">Set</button>
+      </div>
+    </div>
 
     <!-- Main Content Section -->
     <main class="container">
       <!-- Media Player Section -->
       <div class="media-player">
-        <div class="video-container">
-          <video id="custom-video-player">
-            <source
-              src="https://thelongesthumstore.sgp1.cdn.digitaloceanspaces.com/IM-2250/miac.mp4"
-              type="video/mp4"
-            />
-          </video>
+        <!-- Canvas for visualization -->
+        <canvas id="visualization-canvas"></canvas>
 
-          <!-- 비주얼라이저 영역 -->
-          <canvas id="visualizer" class="hidden"></canvas>
+        <!-- Audio Element (Hidden) -->
+        <audio id="audio-player" loop>
+          <source src="interactive_a2_music.mp3" type="audio/mpeg" />
+        </audio>
 
-          <!-- 가사 표시 영역 -->
-          <div id="lyrics-container" class="hidden">
-            <div id="lyrics-text">Music makes you lose control...</div>
-          </div>
-        </div>
-
+        <!-- Custom Controls -->
         <div class="custom-controls">
-          <!-- 재생 시간 정보 -->
-          <div class="time-info">
-            <span id="current-time">0:00</span> /
-            <span id="duration">0:00</span>
-          </div>
-
-          <!-- 진행 바 -->
-          <div class="progress-bar">
-            <span id="progress-bar-fill"></span>
-          </div>
-
-          <!-- 컨트롤 버튼 영역 -->
-          <div class="control-buttons">
-            <!-- 주요 컨트롤 -->
-            <div class="main-controls">
-              <button id="prev-btn" title="Previous">
-                <img src="Image 8" alt="Previous" class="control-icon" />
-              </button>
-
-              <button
-                id="play-pause-btn"
-                onclick="togglePlayPause()"
-                title="Play/Pause"
-              >
-                <img
-                  id="play-pause-img"
-                  src="Image 5"
-                  alt="Play Button"
-                  class="control-icon"
-                />
-              </button>
-
-              <button id="next-btn" title="Next">
-                <img src="Image 13" alt="Next" class="control-icon" />
-              </button>
+          <div class="progress-container">
+            <div class="progress-bar">
+              <span id="progress-bar-fill"></span>
             </div>
+            <div class="time-display">
+              <span id="current-time">0:00</span> /
+              <span id="duration">4:35</span>
+            </div>
+          </div>
 
-            <!-- 볼륨 컨트롤 -->
+          <div class="main-controls">
+            <button id="play-pause-btn" class="control-btn" title="Play/Pause">
+              <span id="play-pause-icon">▶</span>
+            </button>
+
             <div class="volume-control">
-              <button id="mute-btn" title="Mute">
-                <img
-                  id="volume-img"
-                  src="Image 11"
-                  alt="Volume"
-                  class="control-icon"
-                />
+              <button id="mute-btn" class="control-btn" title="Mute">
+                <span id="volume-icon">🔊</span>
               </button>
               <input
                 type="range"
@@ -104,89 +108,32 @@
                 min="0"
                 max="1"
                 step="0.1"
-                value="1"
+                value="0.7"
               />
             </div>
 
-            <!-- 추가 기능 버튼 -->
-            <div class="extra-controls">
-              <button id="shuffle-btn" title="Shuffle">
-                <img src="Image 9" alt="Shuffle" class="control-icon" />
-              </button>
-
-              <button id="repeat-btn" title="Repeat">
-                <img src="Image 6" alt="Repeat" class="control-icon" />
-              </button>
-
-              <button id="restart-btn" title="Restart">
-                <img src="Image 7" alt="Restart" class="control-icon" />
-              </button>
-
-              <button id="fullscreen-btn" title="Fullscreen">
-                <img src="Image 15" alt="Fullscreen" class="control-icon" />
-              </button>
-
-              <button id="like-btn" title="Like">
-                <img src="Image 1" alt="Like" class="control-icon" />
-              </button>
-            </div>
+            <button
+              id="fullscreen-btn"
+              class="control-btn"
+              title="Fullscreen (Press F)"
+            >
+              <span>⛶</span>
+            </button>
           </div>
         </div>
       </div>
 
-      <!-- 곡 정보 섹션 -->
-      <section class="song-info">
-        <h2>Now Playing</h2>
-        <div class="track-info">
-          <div class="album-art">
-            <!-- 앨범 커버 이미지는 나중에 추가 -->
-            <div class="placeholder-image">Music Video</div>
-          </div>
-          <div class="text-info">
-            <h3 class="song-title">Music Video Title</h3>
-            <p class="artist-name">Artist Name</p>
-            <p class="album-name">Album Name (2024)</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- 플레이리스트 섹션 -->
-      <section class="playlist">
-        <h2>Related Videos</h2>
-        <ul class="video-list">
-          <li class="video-item active">
-            <!-- 썸네일 이미지는 나중에 추가 -->
-            <div class="placeholder-thumbnail"></div>
-            <div class="video-item-info">
-              <h4>Current Music Video</h4>
-              <p>Artist Name</p>
-            </div>
-          </li>
-          <li class="video-item">
-            <div class="placeholder-thumbnail"></div>
-            <div class="video-item-info">
-              <h4>Related Music Video 1</h4>
-              <p>Other Artist</p>
-            </div>
-          </li>
-          <li class="video-item">
-            <div class="placeholder-thumbnail"></div>
-            <div class="video-item-info">
-              <h4>Related Music Video 2</h4>
-              <p>Another Artist</p>
-            </div>
-          </li>
-        </ul>
-      </section>
+      <!-- Track Info -->
+      <div class="track-info">
+        <h2 id="track-title">Ambient Study Music</h2>
+        <p id="track-artist">Focus & Concentration</p>
+      </div>
     </main>
 
     <!-- Footer Section -->
     <footer>
-      <p>&copy; 2025 Music Video Player. All rights reserved.</p>
-      <div class="credits">
-        <p>Created for Interactive Media Course (OART1013)</p>
-        <p>Assignment 2: Browser-based Interactive Experiments</p>
-      </div>
+      <p>&copy; 2025 Cosmic Study Music Player. All rights reserved.</p>
+      <p>Created for Interactive Media Course (OART1013) - Assignment 2</p>
     </footer>
   </body>
 </html>
