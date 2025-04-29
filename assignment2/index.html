@@ -13,16 +13,8 @@
     <script src="script.js" defer></script>
   </head>
   <body>
-    <!-- Header Section -->
     <header>
       <h1>Cosmic Study Music Player</h1>
-
-      <!-- 타이머 토글 버튼 -->
-      <div class="timer-toggle">
-        <button id="timer-toggle-btn" title="Show/Hide Timer">
-          <span>⏱</span>
-        </button>
-      </div>
 
       <div class="right-controls">
         <button id="theme-toggle" title="Toggle Dark/Light Mode">
@@ -31,7 +23,6 @@
       </div>
     </header>
 
-    <!-- 타이머 패널 (헤더 아래 절대 위치) -->
     <div id="timer-panel" class="timer-panel hidden">
       <div class="timer-display">
         <span id="timer-minutes">00</span>:<span id="timer-seconds">00</span>
@@ -69,19 +60,14 @@
       </div>
     </div>
 
-    <!-- Main Content Section -->
     <main class="container">
-      <!-- Media Player Section -->
       <div class="media-player">
-        <!-- Canvas for visualization -->
         <canvas id="visualization-canvas"></canvas>
 
-        <!-- Audio Element (Hidden) -->
         <audio id="audio-player" loop>
           <source src="interactive_a2_music.mp3" type="audio/mpeg" />
         </audio>
 
-        <!-- Custom Controls -->
         <div class="custom-controls">
           <div class="progress-container">
             <div class="progress-bar">
@@ -112,25 +98,32 @@
               />
             </div>
 
-            <button
-              id="fullscreen-btn"
-              class="control-btn"
-              title="Fullscreen (Press F)"
-            >
-              <span>⛶</span>
-            </button>
+            <div class="player-controls">
+              <button
+                id="timer-toggle-btn"
+                class="control-btn"
+                title="Show/Hide Timer"
+              >
+                <span>⏱</span>
+              </button>
+              <button
+                id="fullscreen-btn"
+                class="control-btn"
+                title="Fullscreen (Press F)"
+              >
+                <span>⛶</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Track Info -->
       <div class="track-info">
         <h2 id="track-title">Ambient Study Music</h2>
         <p id="track-artist">Focus & Concentration</p>
       </div>
     </main>
 
-    <!-- Footer Section -->
     <footer>
       <p>&copy; 2025 Cosmic Study Music Player. All rights reserved.</p>
       <p>Created for Interactive Media Course (OART1013) - Assignment 2</p>
