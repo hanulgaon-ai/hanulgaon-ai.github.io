@@ -1,3 +1,17 @@
+/* 
+  CSS Variable System:
+  A comprehensive variable system is implemented to maintain design consistency
+  while allowing for theme switching. The color scheme is deliberately minimalist
+  (primarily monochromatic) to minimize visual distractions and enhance focus.
+  
+  The dark mode provides a cosmic space-like environment, which was chosen as the default
+  because it creates the most immersive space experience while reducing eye strain during
+  longer study sessions. The light mode offers an alternative for different lighting
+  conditions and user preferences.
+  
+  The monochromatic approach was a deliberate design choice to avoid distracting colors
+  that might pull attention away from the user's primary task of studying or relaxing.
+*/
 :root {
   --bg-color: #ffffff;
   --text-color: #000000;
@@ -30,6 +44,16 @@
   box-sizing: border-box;
 }
 
+/* 
+  The body design uses the Space Mono font to maintain the cosmic/technical aesthetic.
+  Smooth transitions are applied to color changes for a more pleasant experience when
+  switching between light and dark modes, preventing jarring visual changes.
+  
+  Space Mono was specifically chosen for its technical appearance that aligns with
+  the cosmic theme while still being highly readable for extended periods of use.
+  The font's uniform character width creates a sense of order and structure that
+  supports focused study.
+*/
 body {
   font-family: "Space Mono", monospace;
   background-color: var(--bg-color);
@@ -41,6 +65,13 @@ body {
   overflow-x: hidden;
 }
 
+/* 
+  Header is designed to be unobtrusive yet functional, with a clean layout
+  that provides clear navigation without distracting from the main experience.
+  
+  The minimalist design of the header ensures that it doesn't compete for attention
+  with the visualization, maintaining focus on the core cosmic experience.
+*/
 header {
   display: flex;
   justify-content: space-between;
@@ -63,9 +94,22 @@ header h1 {
   gap: 1rem;
 }
 
+/* 
+  All interactive buttons use cursor: pointer to provide clear visual feedback
+  when hovering over interactive elements, improving usability and user experience.
+  Subtle animations (scaling, rotation) provide additional feedback that enhances
+  the feeling of interactivity without being distracting.
+  
+  These subtle animations were designed to provide just enough feedback to be useful
+  without creating visual noise that would detract from the cosmic experience.
+  The rotation effect on the theme toggle specifically creates a day/night transition
+  feeling that reinforces its function.
+*/
 #timer-toggle-btn,
 #theme-toggle,
-#fullscreen-btn {
+#fullscreen-btn,
+.control-btn,
+.timer-btn {
   background: none;
   border: none;
   color: var(--text-color);
@@ -90,6 +134,17 @@ header h1 {
   position: relative;
 }
 
+/* 
+  Timer panel is designed with a semi-transparent background and blur effect
+  to maintain the cosmic ambiance while providing legible information.
+  The timer functions as both a study aid and a design element that integrates
+  with the space theme, with controls that echo the main player controls.
+  
+  This dual-mode timer was implemented based on personal experience with focus techniques,
+  where tracking time can significantly enhance productivity. The countdown timer
+  supports techniques like the Pomodoro method, while the stopwatch allows for
+  open-ended study sessions.
+*/
 .timer-panel {
   position: absolute;
   bottom: 5rem;
@@ -185,6 +240,15 @@ header h1 {
   margin-top: 0.3rem;
 }
 
+/* 
+  Main container is structured to provide a balanced, centered layout that
+  focuses attention on the media player while maintaining adequate spacing
+  for a clean, uncluttered appearance.
+  
+  The centered layout with maximum width ensures optimal viewing on larger screens
+  while still being fully responsive on smaller devices. This provides a consistent
+  experience across different study environments.
+*/
 .container {
   flex: 1;
   width: 100%;
@@ -197,6 +261,16 @@ header h1 {
   position: relative;
 }
 
+/* 
+  Media player is the central element of the interface, designed with a standard
+  aspect ratio that provides a spacious canvas for the cosmic visualization.
+  The subtle shadow adds depth without being distracting, enhancing the floating
+  feeling of the player in space.
+  
+  The 16:9 aspect ratio was chosen to provide an optimal viewing experience that's
+  familiar and comfortable for users, while the border radius softens the appearance
+  to create a more organic, floating feel that aligns with the cosmic theme.
+*/
 .media-player {
   width: 100%;
   aspect-ratio: 16/9;
@@ -218,6 +292,16 @@ header h1 {
   z-index: 1;
 }
 
+/* 
+  Custom controls use a semi-transparent background with blur effect to maintain
+  visibility of the visualization behind them, enhancing immersion while still
+  providing accessible controls. The transition effect on opacity creates a
+  smooth appearance/disappearance in fullscreen mode.
+  
+  The blur effect was specifically chosen to create a sense of depth that integrates
+  the controls with the cosmic environment rather than placing them as a separate layer.
+  This approach maintains the immersive experience even when interacting with controls.
+*/
 .custom-controls {
   position: absolute;
   bottom: 0;
@@ -286,10 +370,19 @@ header h1 {
   gap: 0.5rem;
 }
 
+/* 
+  Custom volume slider enhances the cosmic aesthetic while maintaining usability.
+  The circular thumb creates a planet-like appearance that reinforces the space theme.
+  
+  The design of the volume slider as a small planet orbiting a line intentionally
+  echoes the main visualization's celestial themes, creating a coherent design language
+  throughout the interface.
+*/
 #volume-slider {
   width: 100px;
   height: 4px;
   -webkit-appearance: none;
+  appearance: none;
   background-color: var(--progress-bg);
   border-radius: 2px;
   outline: none;
@@ -334,6 +427,21 @@ footer p {
   margin: 0.3rem 0;
 }
 
+/* 
+  Fullscreen mode is a critical enhancement for deep focus, removing all distractions
+  and filling the entire screen with the cosmic visualization. Controls are hidden
+  by default and only appear on mouse movement, creating an uninterrupted cosmic experience.
+  This feature directly supports the study/relaxation context by providing a completely
+  immersive environment.
+  
+  The fullscreen implementation was inspired by personal experience where environmental
+  distractions significantly impact focus. By removing browser UI and website elements,
+  the cosmic visualization becomes an environment rather than just media content.
+  
+  The deep space blue-black color (#000811) was specifically chosen after testing
+  different dark tones to find the optimal balance between pure black (which can be harsh)
+  and a more natural cosmic blue that suggests the vastness of space.
+*/
 .fullscreen-mode {
   position: fixed;
   top: 0;
@@ -341,12 +449,12 @@ footer p {
   right: 0;
   bottom: 0;
   z-index: 1000;
-  background-color: #000811; /* 검은색 배경을 우주 화면 색상으로 통일 */
-  width: 100vw; /* 뷰포트 너비로 설정 */
-  height: 100vh; /* 뷰포트 높이로 설정 */
+  background-color: #000811; /* Deep space blue-black color creates authentic cosmic feeling */
+  width: 100vw; /* Using viewport units ensures full screen coverage */
+  height: 100vh;
   overflow: hidden;
-  padding: 0; /* 패딩 제거 */
-  margin: 0; /* 마진 제거 */
+  padding: 0;
+  margin: 0;
 }
 
 .fullscreen-mode .container {
@@ -370,13 +478,18 @@ footer p {
 .fullscreen-mode #visualization-canvas {
   width: 100vw;
   height: 100vh;
-  object-fit: cover; /* 캔버스가 화면을 완전히 채우도록 */
+  object-fit: cover; /* Ensures the canvas fills the entire screen */
 }
 
 .fullscreen-mode .custom-controls {
   opacity: 0;
   transition: opacity 0.3s ease;
-  background-color: rgba(0, 0, 0, 0.6); /* 더 어두운 배경으로 변경 */
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.6
+  ); /* Darker overlay for better contrast in fullscreen */
 }
 
 .fullscreen-mode .media-player:hover .custom-controls {
@@ -398,6 +511,15 @@ footer p {
   display: none;
 }
 
+/* 
+  Flash animation provides visual feedback when the timer ends,
+  creating a gentle pulsing effect that doesn't disrupt concentration
+  but effectively alerts the user.
+  
+  This subtle notification was designed to be noticeable without being jarring,
+  maintaining the calm atmosphere while still effectively communicating that
+  the timer has ended. The gentle flash respects the focused state of the user.
+*/
 @keyframes flash {
   0%,
   100% {
@@ -412,6 +534,15 @@ footer p {
   animation: flash 0.5s ease-in-out 3;
 }
 
+/* 
+  Responsive design ensures the application functions well across different devices,
+  adapting the layout to maintain usability and visual appeal regardless of screen size.
+  This supports users who might study in various environments or switch between devices.
+  
+  The breakpoints were carefully chosen to provide optimal viewing experiences across
+  common device sizes. The adjustments prioritize maintaining the cosmic visualization
+  while adapting controls to be more accessible on smaller screens.
+*/
 @media (max-width: 768px) {
   .media-player {
     aspect-ratio: auto;

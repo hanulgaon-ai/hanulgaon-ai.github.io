@@ -3,26 +3,54 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cosmic Study Music Player</title>
+    <!-- 
+    The title "Silent Trajectory" reflects the concept of users experiencing a quiet yet meaningful cosmic journey.
+    It symbolizes the focused learning experience in the serene vastness of space, where silence enhances concentration.
+    This name was chosen to evoke the dual nature of a cosmic journey through space and a focused study session.
+  -->
+    <title>Silent Trajectory</title>
+    <!-- 
+    'Space Mono' font maintains consistency with the cosmic theme through its typography.
+    The monospace font creates a technical/futuristic feel while also providing uniform letter spacing,
+    which improves readability and helps maintain focus during study sessions.
+    This font choice was deliberate to support the cosmic aesthetic without being distracting.
+  -->
     <link
       href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
   </head>
   <body>
     <header>
-      <h1>Cosmic Study Music Player</h1>
+      <!-- 
+      The main title "Silent Trajectory" emphasizes the concept of a quiet yet purposeful journey.
+      It reflects the idea of floating through the cosmos while maintaining deep concentration.
+      The minimal header design keeps focus on the main experience rather than UI elements.
+    -->
+      <h1>Silent Trajectory</h1>
 
       <div class="right-controls">
+        <!-- 
+        Dark/light mode toggle button allows users to customize their learning environment
+        with their preferred color scheme. The dark mode particularly recreates the darkness of space,
+        enhancing immersion through contrast with the glowing elements.
+        The default dark theme mimics the void of space to create an immersive cosmic experience.
+      -->
         <button id="theme-toggle" title="Toggle Dark/Light Mode">
           <span class="theme-icon">◐</span>
         </button>
       </div>
     </header>
 
+    <!-- 
+    Timer panel is a key feature for study sessions, helping users track their focus periods.
+    The cosmic-themed timer integrates with the space concept while providing practical functionality.
+    Both stopwatch and countdown modes accommodate different study techniques like Pomodoro method.
+    This feature was added based on personal experience with focus techniques, where time tracking
+    enhances productivity without breaking immersion in the cosmic environment.
+  -->
     <div id="timer-panel" class="timer-panel hidden">
       <div class="timer-display">
         <span id="timer-minutes">00</span>:<span id="timer-seconds">00</span>
@@ -61,6 +89,16 @@
     </div>
 
     <main class="container">
+      <!-- 
+      The media player section is the central focus of the application, designed to create
+      a fully immersive space-themed visualization that responds to the audio.
+      The canvas element provides a dynamic cosmic environment that evolves with the music,
+      helping users achieve deeper concentration through visual stimulation.
+      
+      The visualization design was inspired by the feeling of floating in space when hearing
+      the ambient audio. The orbiting planets and stars create a mesmerizing yet non-distracting
+      background that enhances focus rather than pulling attention away from study.
+    -->
       <div class="media-player">
         <canvas id="visualization-canvas"></canvas>
 
@@ -68,6 +106,16 @@
           <source src="interactive_a2_music.mp3" type="audio/mpeg" />
         </audio>
 
+        <!-- 
+        Custom controls are designed to be minimally intrusive yet fully functional.
+        In fullscreen mode, controls automatically hide after 3 seconds of inactivity
+        to provide an uninterrupted cosmic experience, reappearing with mouse movement.
+        This enhances focus while still maintaining accessibility to playback functions.
+        
+        The auto-hiding feature was implemented based on the observation that constant
+        UI presence can be distracting during deep focus sessions, yet controls should
+        be readily available when needed.
+      -->
         <div class="custom-controls">
           <div class="progress-container">
             <div class="progress-bar">
@@ -118,15 +166,31 @@
         </div>
       </div>
 
+      <!-- 
+      Track information section provides a meditative message that reinforces the cosmic theme,
+      inviting users to immerse themselves in the experience and find focus in the simulated void of space.
+      
+      The message "Allow yourself to float in the void, and find focus in the silence" encapsulates
+      the core philosophy of the application - that by letting go of distractions and immersing
+      in the cosmic environment, users can achieve deeper concentration and focus.
+    -->
       <div class="track-info">
-        <h2 id="track-title">Ambient Study Music</h2>
-        <p id="track-artist">Focus & Concentration</p>
+        <h2 id="track-title">Drift Through the Cosmos</h2>
+        <p id="track-artist">
+          Allow yourself to float in the void, and find focus in the silence
+        </p>
       </div>
     </main>
 
     <footer>
-      <p>&copy; 2025 Cosmic Study Music Player. All rights reserved.</p>
-      <p>Created for Interactive Media Course (OART1013) - Assignment 2</p>
+      <p>&copy; 2025 Silent Trajectory. All rights reserved.</p>
+      <p>
+        Created for Interactive Media Course (OART1013) - Assignment 2 - Wonjun
+        Kim(s3938263)
+      </p>
     </footer>
+
+    <!-- Script placed at the end of body for better performance -->
+    <script src="script.js"></script>
   </body>
 </html>
