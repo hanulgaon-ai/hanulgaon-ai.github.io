@@ -30,6 +30,9 @@
  * Canvas-based rendering provides smooth 60fps animations while maintaining
  * performance across devices. Object-oriented design allows for complex
  * star behaviors and lifecycle management that mirror natural phenomena.
+ *
+ * WEBSITES CONSULTED:
+ * ChatGPT, YouTube, and Gemini were instrumental in helping me complete my assignment.
  */
 
 // Global variables for application state
