@@ -1,0 +1,209 @@
+/* 
+BREATHING CONSTELLATIONS - Enhanced CSS
+Interactive Media Assignment - OART1013
+Student: Wonjun Kim (S3938263)
+
+Personal Design Context & Story:
+This design is deeply rooted in childhood memories of stargazing and the wonder
+of discovering patterns in chaos. The visual choices reflect that sense of
+infinite possibility and the transient beauty of cosmic phenomena.
+
+Design Philosophy:
+Every element is designed to evoke that feeling of lying under a vast night sky,
+where imagination transforms scattered points of light into meaningful stories.
+The breathing animations mirror the living quality of the universe itself -
+never static, always in gentle motion, just like the stars seemed to pulse
+with life when I was young.
+
+Color Palette Reasoning:
+The deep space gradient creates that familiar feeling of looking up into
+the infinite depth of space. The blues and purples echo the twilight hours
+when stars first become visible, that magical transition from day to night
+when wonder feels most accessible.
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  /* Deep space gradient recreates the feeling of gazing into infinite cosmic depth */
+  background: #0f0f23;
+  background: -webkit-radial-gradient(
+    center,
+    ellipse,
+    #1a0a2e 0%,
+    #16213e 50%,
+    #0f0f23 100%
+  );
+  background: -moz-radial-gradient(
+    center,
+    ellipse,
+    #1a0a2e 0%,
+    #16213e 50%,
+    #0f0f23 100%
+  );
+  background: radial-gradient(
+    ellipse at center,
+    #1a0a2e 0%,
+    #16213e 50%,
+    #0f0f23 100%
+  );
+  font-family: "Arial", sans-serif;
+  color: rgba(255, 255, 255, 0.8);
+  /* Crosshair cursor suggests precision and intention in star formation */
+  cursor: crosshair;
+  /* Prevent text selection on touch devices */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Prevent touch callouts on iOS */
+  -webkit-touch-callout: none;
+  /* Prevent tap highlight on mobile */
+  -webkit-tap-highlight-color: transparent;
+}
+
+#canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: block;
+  /* Touch optimization */
+  touch-action: none;
+}
+
+/* Main title with cosmic styling - represents the breath of the universe itself */
+.title {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  z-index: 2;
+  /* Multi-layer glow effect mimics how stars appear to pulse and breathe in the night sky */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(100, 200, 255, 0.6), 0 0 30px rgba(100, 200, 255, 0.4);
+  letter-spacing: 4px;
+  /* Breathing animation reflects the living quality I always felt the night sky possessed */
+  animation: breathe 4s ease-in-out infinite;
+}
+
+/* The breathing animation captures that sense of the universe being alive,
+   just like how stars seemed to pulse with their own rhythm when I was a child */
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+/* Information panel - designed as a window into cosmic knowledge */
+.info-panel {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  /* Gradient creates depth, like looking through a telescope eyepiece */
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.8),
+    rgba(20, 20, 40, 0.7)
+  );
+  padding: 20px;
+  border-radius: 12px;
+  /* Subtle border echoes the glow of distant stars */
+  border: 1px solid rgba(100, 200, 255, 0.3);
+  z-index: 2;
+  max-width: 300px;
+  transition: all 0.3s ease;
+  /* Backdrop blur creates that dreamy quality of starlit nights */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Hover effect suggests the panel is itself a celestial object responding to attention */
+.info-panel:hover {
+  border-color: rgba(100, 200, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+.info-panel h3 {
+  margin: 0 0 15px 0;
+  font-size: 18px;
+  color: #64c8ff;
+  /* Text glow mirrors the luminescence of stars */
+  text-shadow: 0 0 5px rgba(100, 200, 255, 0.6);
+}
+
+.info-panel p {
+  margin: 8px 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* Statistics display - uses monospace font to suggest scientific precision */
+.stats {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(100, 200, 255, 0.3);
+  display: flex;
+  justify-content: space-between;
+  /* Monospace font evokes the feeling of astronomical observations and data */
+  font-family: "Courier New", monospace;
+}
+
+.stats p {
+  margin: 0;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Responsive design ensures the experience works across all viewing contexts,
+   just like stars can be appreciated from any vantage point */
+@media (max-width: 768px) {
+  .title {
+    font-size: 20px;
+    letter-spacing: 2px;
+    top: 15px;
+  }
+
+  .info-panel {
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
+    max-width: none;
+    padding: 15px;
+  }
+}
+
+/* Accessibility considerations - respects users who prefer reduced motion
+   while maintaining the core interactive experience */
+@media (prefers-reduced-motion: reduce) {
+  .title {
+    animation: none;
+  }
+
+  .info-panel {
+    transition: none;
+  }
+}

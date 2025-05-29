@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Breathing Constellations - Interactive Night Sky</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <!-- 
+    BREATHING CONSTELLATIONS - HTML Structure
+    Interactive Media Assignment - OART1013
+    Student: Wonjun Kim (S3938263)
+    
+    Personal Story Context:
+    As a child, I would lie on my back looking up at the countless stars in the night sky,
+    wondering what would happen if I could draw lines between all those distant lights.
+    As I grew older, I learned about constellations - those ancient patterns that humans
+    have seen in the stars for thousands of years. I began creating my own constellations,
+    connecting stars in ways that made sense to me.
+    
+    But I noticed something profound: constellations are temporary. The stars move,
+    they fade, new ones appear. Each night offered a new canvas for imagination.
+    I had to constantly create new personal constellations as the old ones disappeared.
+    
+    This assignment is born from that childhood memory - the joy of discovery,
+    the acceptance of impermanence, and the endless possibility of creation.
+    This interactive experience allows users to become cosmic architects,
+    continuously creating new constellations in an ever-changing universe.
+    -->
+
+    <canvas id="canvas"></canvas>
+
+    <!-- Main title with breathing animation that mirrors the living universe -->
+    <div class="title">BREATHING CONSTELLATIONS</div>
+
+    <!-- Information panel providing context and interaction guidance -->
+    <div class="info-panel">
+      <h3>🌌 Interactive Experience</h3>
+      <p>
+        🌟 <strong>Hover/Touch:</strong> Channel cosmic energy to accelerate
+        star formation
+      </p>
+      <p>
+        ✨ <strong>Click/Tap:</strong> Create constellation patterns through
+        recognition
+      </p>
+
+      <div class="stats">
+        <p>Stars Created: <span id="star-count">0</span></p>
+        <p>Constellations: <span id="constellation-count">0</span></p>
+      </div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
