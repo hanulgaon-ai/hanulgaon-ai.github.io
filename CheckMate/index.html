@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CheckMate - Fair Roommate Living</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <style>
+      /* Base styles and reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      /* Main container styling */
+      .container {
+        max-width: 400px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+      }
+
+      /* Header section with branding */
+      .header {
+        background: linear-gradient(45deg, #ff4757, #ff3838);
+        padding: 30px 20px;
+        text-align: center;
+        color: white;
+      }
+
+      .header h1 {
+        font-size: 26px;
+        margin-bottom: 5px;
+        font-weight: 700;
+      }
+
+      .header .subtitle {
+        font-size: 12px;
+        opacity: 0.9;
+        margin-bottom: 10px;
+      }
+
+      .header p {
+        opacity: 0.95;
+        font-size: 14px;
+      }
+
+      /* Navigation tabs */
+      .nav-tabs {
+        display: flex;
+        background: #f8f9fa;
+      }
+
+      .nav-tab {
+        flex: 1;
+        padding: 15px;
+        text-align: center;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.3s;
+        font-size: 13px;
+      }
+
+      .nav-tab.active {
+        background: white;
+        color: #ff4757;
+        border-bottom: 3px solid #ff4757;
+      }
+
+      /* Content area */
+      .content {
+        padding: 20px;
+        min-height: 400px;
+      }
+
+      .page {
+        display: none;
+      }
+
+      .page.active {
+        display: block;
+      }
+
+      /* Date navigation for daily tasks */
+      .date-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        background: #f8f9fa;
+        border-radius: 15px;
+        padding: 15px;
+      }
+
+      .date-nav button {
+        background: white;
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        padding: 8px 12px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.3s;
+      }
+
+      .date-nav button:hover {
+        border-color: #ff4757;
+        color: #ff4757;
+      }
+
+      .current-date {
+        font-weight: 600;
+        font-size: 16px;
+      }
+
+      /* Roommate selection buttons */
+      .roommate-selector {
+        display: flex;
+        margin-bottom: 20px;
+        background: #f8f9fa;
+        border-radius: 15px;
+        padding: 5px;
+      }
+
+      .roommate-btn {
+        flex: 1;
+        padding: 12px;
+        border: none;
+        background: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s;
+        font-size: 14px;
+      }
+
+      .roommate-btn.active {
+        background: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Color coding for each roommate */
+      .roommate-btn.person-a.active {
+        color: #ff4757;
+      }
+      .roommate-btn.person-b.active {
+        color: #ffa502;
+      }
+      .roommate-btn.person-c.active {
+        color: #2ed573;
+      }
+
+      /* Chore list styling */
+      .chore-list {
+        space-y: 10px;
+      }
+
+      .chore-item {
+        background: #f8f9fa;
+        border-radius: 15px;
+        padding: 15px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.3s ease;
+      }
+
+      /* Highlighting for selected roommate's tasks */
+      .chore-item.highlighted {
+        background: #fff;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border: 2px solid transparent;
+      }
+
+      .chore-item.highlighted.person-a {
+        border-color: #ff4757;
+        background: #fff5f5;
+      }
+
+      .chore-item.highlighted.person-b {
+        border-color: #ffa502;
+        background: #fffbf0;
+      }
+
+      .chore-item.highlighted.person-c {
+        border-color: #2ed573;
+        background: #f0fff4;
+      }
+
+      .chore-info {
+        flex: 1;
+      }
+
+      .chore-name {
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .chore-weight {
+        font-size: 12px;
+        color: #666;
+      }
+
+      /* Check button styling */
+      .chore-checks {
+        display: flex;
+        gap: 8px;
+      }
+
+      .check-btn {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 3px solid #ddd;
+        background: white;
+        cursor: pointer;
+        transition: all 0.3s;
+        position: relative;
+        font-weight: bold;
+      }
+
+      .check-btn.person-a {
+        border-color: #ff4757;
+      }
+
+      .check-btn.person-b {
+        border-color: #ffa502;
+      }
+
+      .check-btn.person-c {
+        border-color: #2ed573;
+      }
+
+      .check-btn.checked.person-a {
+        background: #ff4757;
+        color: white;
+      }
+
+      .check-btn.checked.person-b {
+        background: #ffa502;
+        color: white;
+      }
+
+      .check-btn.checked.person-c {
+        background: #2ed573;
+        color: white;
+      }
+
+      .check-btn.checked::after {
+        content: "✓";
+        color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+      .check-btn.dimmed {
+        opacity: 0.3;
+        pointer-events: none;
+      }
+
+      /* Statistics page styling */
+      .stats-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .stat-card {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 15px;
+        text-align: center;
+      }
+
+      .stat-card.person-a {
+        border-left: 4px solid #ff4757;
+      }
+      .stat-card.person-b {
+        border-left: 4px solid #ffa502;
+      }
+      .stat-card.person-c {
+        border-left: 4px solid #2ed573;
+      }
+
+      .stat-name {
+        font-size: 14px;
+        color: #666;
+        font-weight: 600;
+      }
+
+      .stat-value {
+        font-size: 20px;
+        font-weight: bold;
+        margin: 5px 0;
+      }
+
+      .stat-percentage {
+        font-size: 11px;
+        color: #999;
+      }
+
+      /* Progress bars for visual representation */
+      .progress-bar {
+        width: 100%;
+        height: 10px;
+        background: #eee;
+        border-radius: 5px;
+        overflow: hidden;
+        margin: 10px 0;
+      }
+
+      .progress-fill {
+        height: 100%;
+        transition: width 0.5s ease;
+      }
+
+      .progress-fill.person-a {
+        background: #ff4757;
+      }
+      .progress-fill.person-b {
+        background: #ffa502;
+      }
+      .progress-fill.person-c {
+        background: #2ed573;
+      }
+
+      /* Settlement page styling */
+      .settlement-card {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 25px;
+        border-radius: 15px;
+        margin-bottom: 25px;
+      }
+
+      .settlement-title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .settlement-amount {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .amount-input-container {
+        display: flex;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        padding: 8px 12px;
+        gap: 5px;
+      }
+
+      .amount-input-container input {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+        width: 100px;
+        text-align: center;
+      }
+
+      .amount-input-container input:focus {
+        outline: none;
+      }
+
+      .amount-input-container span {
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .settlement-note {
+        font-size: 12px;
+        opacity: 0.9;
+        text-align: center;
+        margin-top: 10px;
+        font-style: italic;
+      }
+
+      /* Payment breakdown section */
+      .payment-breakdown {
+        background: #f8f9fa;
+        border-radius: 15px;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+
+      .payment-breakdown h3 {
+        font-size: 16px;
+        margin-bottom: 15px;
+        color: #333;
+        text-align: center;
+      }
+
+      .payment-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .payment-item:last-child {
+        border-bottom: none;
+      }
+
+      .payment-name {
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+      }
+
+      .payment-indicator {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 8px;
+      }
+
+      .payment-indicator.person-a {
+        background: #ff4757;
+      }
+      .payment-indicator.person-b {
+        background: #ffa502;
+      }
+      .payment-indicator.person-c {
+        background: #2ed573;
+      }
+
+      .payment-amount {
+        font-weight: bold;
+        font-size: 16px;
+      }
+
+      /* Fairness explanation section */
+      .fairness-info {
+        background: #e8f5e8;
+        border: 2px solid #2ed573;
+        border-radius: 15px;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+
+      .fairness-info h3 {
+        color: #2ed573;
+        font-size: 16px;
+        margin-bottom: 15px;
+        text-align: center;
+      }
+
+      .fairness-text {
+        font-size: 14px;
+        line-height: 1.5;
+        color: #333;
+        text-align: center;
+      }
+
+      /* Month selector */
+      .month-selector {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      .month-selector select {
+        padding: 12px 15px;
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        font-size: 14px;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- App header with branding -->
+      <div class="header">
+        <h1>♟️ CheckMate</h1>
+        <div class="subtitle">Checklist + Roommate = Fair Living</div>
+        <p>Transparent sharing, fair settlement</p>
+      </div>
+
+      <!-- Main navigation -->
+      <div class="nav-tabs">
+        <button class="nav-tab active" onclick="showPage('checklist')">
+          Daily Tasks
+        </button>
+        <button class="nav-tab" onclick="showPage('stats')">Statistics</button>
+        <button class="nav-tab" onclick="showPage('settlement')">
+          Settlement
+        </button>
+      </div>
+
+      <div class="content">
+        <!-- Daily task checklist page -->
+        <div id="checklist" class="page active">
+          <div class="date-nav">
+            <button onclick="changeDate(-1)">◀ Previous Day</button>
+            <div class="current-date" id="currentDate">Today</div>
+            <button onclick="changeDate(1)">Next Day ▶</button>
+          </div>
+
+          <div class="roommate-selector">
+            <button class="roommate-btn person-a" onclick="selectRoommate('a')">
+              Wonjun
+            </button>
+            <button class="roommate-btn person-b" onclick="selectRoommate('b')">
+              Sejun
+            </button>
+            <button class="roommate-btn person-c" onclick="selectRoommate('c')">
+              Changjo
+            </button>
+          </div>
+
+          <div class="chore-list" id="choreList">
+            <!-- Daily tasks will be generated here -->
+          </div>
+        </div>
+
+        <!-- Monthly statistics page -->
+        <div id="stats" class="page">
+          <div class="month-selector">
+            <select id="monthSelector" onchange="updateStats()">
+              <option value="2025-06">June 2025</option>
+              <option value="2025-05">May 2025</option>
+              <option value="2025-04">April 2025</option>
+            </select>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card person-a">
+              <div class="stat-name">Wonjun</div>
+              <div class="stat-value" id="statsA">0</div>
+              <div class="stat-percentage" id="percentA">0%</div>
+            </div>
+            <div class="stat-card person-b">
+              <div class="stat-name">Sejun</div>
+              <div class="stat-value" id="statsB">0</div>
+              <div class="stat-percentage" id="percentB">0%</div>
+            </div>
+            <div class="stat-card person-c">
+              <div class="stat-name">Changjo</div>
+              <div class="stat-value" id="statsC">0</div>
+              <div class="stat-percentage" id="percentC">0%</div>
+            </div>
+          </div>
+
+          <div id="progressBars">
+            <!-- Progress visualization will be generated here -->
+          </div>
+        </div>
+
+        <!-- Monthly cost settlement page -->
+        <div id="settlement" class="page">
+          <div class="settlement-card">
+            <div class="settlement-title">Monthly Living Cost Settlement</div>
+            <div class="settlement-amount">
+              <span>Total Monthly Expenses:</span>
+              <div class="amount-input-container">
+                <span>$</span>
+                <input
+                  type="number"
+                  id="totalExpenses"
+                  value="3000"
+                  min="0"
+                  step="100"
+                  onchange="calculatePaymentSettlement()"
+                />
+                <span>AUD</span>
+              </div>
+            </div>
+            <div class="settlement-note">
+              Individual payments adjusted based on household contribution
+            </div>
+          </div>
+
+          <div class="payment-breakdown">
+            <h3>💰 Individual Payment Breakdown</h3>
+            <div class="payment-item">
+              <div class="payment-name">
+                <div class="payment-indicator person-a"></div>
+                Wonjun
+              </div>
+              <div class="payment-amount" id="paymentBreakdownA">$1,000</div>
+            </div>
+            <div class="payment-item">
+              <div class="payment-name">
+                <div class="payment-indicator person-b"></div>
+                Sejun
+              </div>
+              <div class="payment-amount" id="paymentBreakdownB">$1,000</div>
+            </div>
+            <div class="payment-item">
+              <div class="payment-name">
+                <div class="payment-indicator person-c"></div>
+                Changjo
+              </div>
+              <div class="payment-amount" id="paymentBreakdownC">$1,000</div>
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card person-a">
+              <div class="stat-name">Wonjun</div>
+              <div class="stat-value" id="paymentA">$1,000</div>
+              <div class="stat-percentage" id="contributionA">33.3%</div>
+            </div>
+            <div class="stat-card person-b">
+              <div class="stat-name">Sejun</div>
+              <div class="stat-value" id="paymentB">$1,000</div>
+              <div class="stat-percentage" id="contributionB">33.3%</div>
+            </div>
+            <div class="stat-card person-c">
+              <div class="stat-name">Changjo</div>
+              <div class="stat-value" id="paymentC">$1,000</div>
+              <div class="stat-percentage" id="contributionC">33.3%</div>
+            </div>
+          </div>
+
+          <div class="fairness-info">
+            <h3>⚖️ How Our Fair Payment System Works</h3>
+            <div class="fairness-text">
+              Higher household contribution = Lower monthly payment<br />
+              The more chores you complete, the less you pay!<br />
+              This system encourages active participation in shared
+              responsibilities.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Core data structure for household tasks
+      const householdTasks = [
+        { name: "Take out rubbish bins", weight: 1 },
+        { name: "Wash dishes & clean kitchen", weight: 2 },
+        { name: "Clean bathroom & toilet", weight: 3 },
+        { name: "Vacuum & mop floors", weight: 2 },
+        { name: "Grocery shopping trip", weight: 1 },
+        { name: "Cook shared meals", weight: 2 },
+        { name: "Do laundry & folding", weight: 1 },
+        { name: "Tidy common areas", weight: 1 },
+      ];
+
+      // Roommate configuration
+      const housemates = ["a", "b", "c"];
+      const housemateNames = {
+        a: "Wonjun",
+        b: "Sejun",
+        c: "Changjo",
+      };
+
+      // App state variables
+      let selectedRoommate = null;
+      let currentMonth = "2025-06";
+      let viewingDate = new Date();
+
+      // In-memory data storage (daily task tracking)
+      let taskData = {};
+
+      // Helper function to create date key for storage
+      function createDateKey(date = viewingDate) {
+        return date.toISOString().split("T")[0]; // Returns YYYY-MM-DD format
+      }
+
+      // Initialize task data for current viewing date
+      function initializeTaskData() {
+        const dateKey = createDateKey();
+        if (!taskData[dateKey]) {
+          taskData[dateKey] = {};
+        }
+
+        // Set up task completion tracking for each household task
+        householdTasks.forEach((task, taskIndex) => {
+          if (!taskData[dateKey][taskIndex]) {
+            taskData[dateKey][taskIndex] = { a: 0, b: 0, c: 0 };
+          }
+        });
+
+        return taskData[dateKey];
+      }
+
+      // Render the daily task checklist
+      function renderTaskChecklist() {
+        const taskContainer = document.getElementById("choreList");
+        const dailyData = initializeTaskData();
+
+        taskContainer.innerHTML = householdTasks
+          .map((task, taskIndex) => {
+            // Determine if this task should be highlighted
+            let itemClasses = "chore-item";
+            let isHighlighted = false;
+
+            if (
+              selectedRoommate &&
+              dailyData[taskIndex][selectedRoommate] > 0
+            ) {
+              itemClasses += ` highlighted person-${selectedRoommate}`;
+              isHighlighted = true;
+            }
+
+            return `
+                    <div class="${itemClasses}">
+                        <div class="chore-info">
+                            <div class="chore-name">${task.name}</div>
+                            <div class="chore-weight">Effort points: ${
+                              task.weight
+                            }</div>
+                        </div>
+                        <div class="chore-checks">
+                            ${housemates
+                              .map((person) => {
+                                let buttonClasses = `check-btn person-${person}`;
+                                if (dailyData[taskIndex][person] > 0) {
+                                  buttonClasses += " checked";
+                                }
+
+                                // Dim unrelated buttons when highlighting
+                                if (
+                                  selectedRoommate &&
+                                  isHighlighted &&
+                                  person !== selectedRoommate
+                                ) {
+                                  buttonClasses += " dimmed";
+                                }
+
+                                return `
+                                    <button class="${buttonClasses}" 
+                                            onclick="toggleTaskCompletion(${taskIndex}, '${person}')"
+                                            title="${housemateNames[person]}">
+                                    </button>
+                                `;
+                              })
+                              .join("")}
+                        </div>
+                    </div>
+                `;
+          })
+          .join("");
+      }
+
+      // Handle task completion toggle (check/uncheck)
+      function toggleTaskCompletion(taskIndex, person) {
+        const dateKey = createDateKey();
+        if (!taskData[dateKey]) {
+          initializeTaskData();
+        }
+
+        // Simple toggle: 0 = not done, 1 = completed
+        if (taskData[dateKey][taskIndex][person] > 0) {
+          taskData[dateKey][taskIndex][person] = 0; // Mark as not done
+        } else {
+          taskData[dateKey][taskIndex][person] = 1; // Mark as completed
+        }
+
+        // Refresh all displays
+        renderTaskChecklist();
+        calculateMonthlyStats();
+        calculatePaymentSettlement();
+      }
+
+      // Handle roommate selection for filtering
+      function selectRoommate(person) {
+        // Toggle selection - clicking same person deselects
+        if (selectedRoommate === person) {
+          selectedRoommate = null;
+          document
+            .querySelectorAll(".roommate-btn")
+            .forEach((btn) => btn.classList.remove("active"));
+        } else {
+          selectedRoommate = person;
+          document
+            .querySelectorAll(".roommate-btn")
+            .forEach((btn) => btn.classList.remove("active"));
+          document
+            .querySelector(`.roommate-btn.person-${person}`)
+            .classList.add("active");
+        }
+
+        // Re-render checklist to show highlighting
+        renderTaskChecklist();
+      }
+
+      // Navigate between dates
+      function changeDate(dayOffset) {
+        viewingDate.setDate(viewingDate.getDate() + dayOffset);
+        updateDateDisplay();
+        renderTaskChecklist();
+      }
+
+      // Update the displayed date
+      function updateDateDisplay() {
+        const dateOptions = {
+          weekday: "short",
+          month: "short",
+          day: "numeric",
+        };
+        document.getElementById("currentDate").textContent =
+          viewingDate.toLocaleDateString("en-AU", dateOptions);
+      }
+
+      // Switch between app pages
+      function showPage(pageId) {
+        // Hide all pages and deactivate tabs
+        document
+          .querySelectorAll(".page")
+          .forEach((page) => page.classList.remove("active"));
+        document
+          .querySelectorAll(".nav-tab")
+          .forEach((tab) => tab.classList.remove("active"));
+
+        // Show selected page and activate tab
+        document.getElementById(pageId).classList.add("active");
+        event.target.classList.add("active");
+
+        // Update data when switching to stats or settlement
+        if (pageId === "stats") calculateMonthlyStats();
+        if (pageId === "settlement") calculatePaymentSettlement();
+      }
+
+      // Calculate and display monthly statistics
+      function calculateMonthlyStats() {
+        const selectedMonth = document.getElementById("monthSelector").value;
+        const monthlyTotals = { a: 0, b: 0, c: 0 };
+
+        // Sum up all task completions for the selected month
+        Object.keys(taskData).forEach((dateKey) => {
+          if (dateKey.startsWith(selectedMonth)) {
+            const dayData = taskData[dateKey];
+            householdTasks.forEach((task, taskIndex) => {
+              if (dayData[taskIndex]) {
+                housemates.forEach((person) => {
+                  monthlyTotals[person] +=
+                    (dayData[taskIndex][person] || 0) * task.weight;
+                });
+              }
+            });
+          }
+        });
+
+        const totalEffort = monthlyTotals.a + monthlyTotals.b + monthlyTotals.c;
+
+        // Update individual statistics
+        housemates.forEach((person) => {
+          document.getElementById(`stats${person.toUpperCase()}`).textContent =
+            monthlyTotals[person];
+          const percentage =
+            totalEffort > 0
+              ? ((monthlyTotals[person] / totalEffort) * 100).toFixed(1)
+              : 0;
+          document.getElementById(
+            `percent${person.toUpperCase()}`
+          ).textContent = `${percentage}% contribution`;
+        });
+
+        // Update visual progress bars
+        updateProgressVisualization(monthlyTotals, totalEffort);
+      }
+
+      // Create visual progress bars
+      function updateProgressVisualization(totals, grandTotal) {
+        const progressContainer = document.getElementById("progressBars");
+        progressContainer.innerHTML = housemates
+          .map((person) => {
+            const percentage =
+              grandTotal > 0 ? (totals[person] / grandTotal) * 100 : 0;
+            return `
+                    <div style="margin-bottom: 15px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <span>${
+                              housemateNames[person]
+                            }'s Contribution</span>
+                            <span>${percentage.toFixed(1)}%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill person-${person}" style="width: ${percentage}%"></div>
+                        </div>
+                    </div>
+                `;
+          })
+          .join("");
+      }
+
+      // Calculate fair payment settlement
+      function calculatePaymentSettlement() {
+        const monthlyTotals = { a: 0, b: 0, c: 0 };
+
+        // Calculate contribution totals for current month
+        Object.keys(taskData).forEach((dateKey) => {
+          if (dateKey.startsWith(currentMonth)) {
+            const dayData = taskData[dateKey];
+            householdTasks.forEach((task, taskIndex) => {
+              if (dayData[taskIndex]) {
+                housemates.forEach((person) => {
+                  monthlyTotals[person] +=
+                    (dayData[taskIndex][person] || 0) * task.weight;
+                });
+              }
+            });
+          }
+        });
+
+        const totalContribution =
+          monthlyTotals.a + monthlyTotals.b + monthlyTotals.c;
+
+        // Get total expenses from input field
+        const totalExpensesInput = document.getElementById("totalExpenses");
+        const monthlyExpenses = parseInt(totalExpensesInput.value) || 3000;
+
+        // Calculate individual payment amounts
+        housemates.forEach((person) => {
+          let contributionPercentage, paymentAmount;
+
+          if (totalContribution > 0) {
+            contributionPercentage =
+              (monthlyTotals[person] / totalContribution) * 100;
+            // Fair payment: higher contribution = lower payment
+            // Using inverse relationship with significant adjustment range
+            const contributionFactor = contributionPercentage / 100;
+            const adjustmentRange = 0.8; // 80% range for payment adjustment
+            paymentAmount = Math.round(
+              (monthlyExpenses / 3) *
+                (1.6 - contributionFactor * adjustmentRange)
+            );
+          } else {
+            // Equal split when no contributions recorded
+            contributionPercentage = 33.3;
+            paymentAmount = Math.round(monthlyExpenses / 3);
+          }
+
+          // Update payment displays
+          document.getElementById(
+            `payment${person.toUpperCase()}`
+          ).textContent = `$${paymentAmount.toLocaleString()} AUD`;
+          document.getElementById(
+            `paymentBreakdown${person.toUpperCase()}`
+          ).textContent = `$${paymentAmount.toLocaleString()}`;
+          document.getElementById(
+            `contribution${person.toUpperCase()}`
+          ).textContent = `${contributionPercentage.toFixed(
+            1
+          )}% effort contributed`;
+        });
+      }
+
+      // Handle month selection change
+      function updateMonthSelection() {
+        currentMonth = document.getElementById("monthSelector").value;
+        calculateMonthlyStats();
+      }
+
+      // Generate sample data for demonstration purposes
+      function createSampleData() {
+        const today = new Date();
+
+        // Create realistic sample data for past 10 days
+        for (let dayOffset = 1; dayOffset <= 10; dayOffset++) {
+          const sampleDate = new Date(today);
+          sampleDate.setDate(today.getDate() - dayOffset);
+          const dateKey = sampleDate.toISOString().split("T")[0];
+
+          taskData[dateKey] = {};
+          householdTasks.forEach((task, taskIndex) => {
+            // Randomly assign task completions with some realistic patterns
+            taskData[dateKey][taskIndex] = {
+              a: Math.random() > 0.6 ? 1 : 0, // Wonjun does about 40% of tasks
+              b: Math.random() > 0.7 ? 1 : 0, // Sejun does about 30% of tasks
+              c: Math.random() > 0.5 ? 1 : 0, // Changjo does about 50% of tasks
+            };
+          });
+        }
+
+        // Create sample data for May 2025 as well
+        for (let day = 1; day <= 15; day++) {
+          const dateKey = `2025-05-${day.toString().padStart(2, "0")}`;
+          taskData[dateKey] = {};
+          householdTasks.forEach((task, taskIndex) => {
+            taskData[dateKey][taskIndex] = {
+              a: Math.random() > 0.5 ? 1 : 0,
+              b: Math.random() > 0.6 ? 1 : 0,
+              c: Math.random() > 0.4 ? 1 : 0,
+            };
+          });
+        }
+      }
+
+      // Initialize the application
+      document.addEventListener("DOMContentLoaded", function () {
+        // Create demonstration data
+        createSampleData();
+
+        // Set up initial date display
+        updateDateDisplay();
+
+        // Start with no roommate filter selected
+        selectedRoommate = null;
+
+        // Render initial view
+        renderTaskChecklist();
+        calculateMonthlyStats();
+        calculatePaymentSettlement();
+
+        // Set up month selector event listener
+        document
+          .getElementById("monthSelector")
+          .addEventListener("change", updateMonthSelection);
+      });
+    </script>
+  </body>
+</html>
